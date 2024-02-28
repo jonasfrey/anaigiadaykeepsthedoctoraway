@@ -138,14 +138,84 @@ let f_s_time = function(n_ms_ts){
 
 let s_port = window.location.port;
 let s_url_api = `${window.location.protocol}//${window.location.hostname}:${s_port}`
+let s_text = '🔠'
+let s_speak = '🗣️'
+let s_image = '🖼️'
+let s_to = '👉'
+// let f_s_chars = function(s_input){
+//     s_input = s_input.replaceAll('')
+// }
+class O_model_info{
+    constructor(
+        s_name, 
+        a_o_type_input,
+        a_o_type_output
+    ){
+        this.s_name = s_name, 
+        this.a_o_type_input = a_o_type_input 
+        this.a_o_type_output = a_o_type_output
+    }
+}
+class O_type{
+    constructor(
+        a_s_name,
+        a_s_emoji
+    ){
+        this.a_s_name = a_s_name
+        this.a_s_emoji = a_s_emoji
+    }
+}
+let o_type_text = new O_type(
+    ['text'],
+    ['🔠']
+)
+let o_type_image = new O_type(
+    ['image'],
+    ['🖼️']
+)
+let o_type_audio = new O_type(
+    ['audio'],
+    ['🗣️']
+)
+let a_o_model_info = [
+    new O_model_info('gpt-4-vision-preview',[o_type_text],[o_type_image]),
+    new O_model_info('dall-e-3', [o_type_text],[o_type_image]),
+    new O_model_info('dall-e-2', [o_type_text],[o_type_image]),
+    new O_model_info('gpt-4', [o_type_text],[o_type_text]),
+    new O_model_info('gpt-4-turbo-preview', [o_type_text],[o_type_text]),
+    new O_model_info('gpt-3.5-turbo-0613', [o_type_text], [o_type_text]),
+    new O_model_info('gpt-3.5-turbo-1106', [o_type_text], [o_type_text]),
+    new O_model_info('gpt-3.5-turbo-16k', [o_type_text], [o_type_text]),
+    new O_model_info('gpt-4-0613', [o_type_text], [o_type_text]),
+    new O_model_info('gpt-3.5-turbo-16k-0613', [o_type_text], [o_type_text]),
+    new O_model_info('gpt-4-0125-preview', [o_type_text], [o_type_text]),
+    new O_model_info('gpt-3.5-turbo-instruct-0914', [o_type_text], [o_type_text]),
+    new O_model_info('gpt-4-1106-preview', [o_type_text], [o_type_text]),
+    new O_model_info('gpt-3.5-turbo-0125', [o_type_text], [o_type_text]),
+    new O_model_info('gpt-3.5-turbo', [o_type_text], [o_type_text]),
+    new O_model_info('gpt-3.5-turbo-0301', [o_type_text], [o_type_text]),
+    new O_model_info('whisper-1', [o_type_text],[o_type_audio]),
+    new O_model_info('tts-1', [o_type_text],[o_type_audio]),
+    new O_model_info('tts-1-1106', [o_type_text],[o_type_audio]),
+    new O_model_info('text-embedding-3-large', [], []),
+    new O_model_info('tts-1-hd-1106', [], []),
+    new O_model_info('tts-1-hd', [], []),
+    new O_model_info('babbage-002', [], []),
+    new O_model_info('gpt-3.5-turbo-instruct', [], []),
+    new O_model_info('davinci-002', [], []),
+    new O_model_info('text-embedding-ada-002', [], []),
+    new O_model_info('text-embedding-3-small', [], []),
+]
+
 let o_state = {
+    a_o_model_info: a_o_model_info,
     b_display_settings: false, 
     o_message_out: null,
     o_tmp: null,
     n_id_wsi: 0,
     s_url_api: s_url_api,
     s_text: 'hello',
-    a_o_model: await(
+    a_o_model: (await(
         await(fetch(
             s_url_api, 
             {
@@ -157,7 +227,14 @@ let o_state = {
                 )
             }
         ))
-    ).json(), 
+    ).json()).map(o=>{
+        o.v_o_model_info = a_o_model_info.find(o=>o.s_name == o?.id);
+        return o
+    }).sort((o,o2)=>{
+        let n_idx1 = a_o_model_info.map(o=>o.s_name).indexOf(o?.id);
+        let n_idx2 = a_o_model_info.map(o=>o.s_name).indexOf(o2?.id);
+        return n_idx1-n_idx2
+    }), 
     o_model: null, 
     s_prompt: 'make a text with the most common markdown elements that i can use to test my markdown to html script toghteher with my css styling',
     a_o_message: []
@@ -165,10 +242,12 @@ let o_state = {
 
 window.o_state = o_state
 
-o_state.o_model = o_state.a_o_model.find(
-    o=>o.id == 'gpt-3.5-turbo'
+let o_model = o_state.a_o_model.find(
+    o=>o.id == 'gpt-3.5-turbo-16k-0613'
 );
-console.log(o_state.o_model)
+if(o_model){
+    o_state.o_model = o_model
+}
 let f_sleep_n_ms = async function(n_ms){
     return new Promise((f_res)=>{
         window.setTimeout(()=>{
@@ -316,11 +395,28 @@ document.body.appendChild(
                                             s_tag: "select", 
                                             a_o: [
                                                 ...o_state?.a_o_model.map(o=>{
+                                                    
+                                                    let s_icons = [
+                                                        o?.v_o_model_info?.a_o_type_input.map(o=>{
+                                                            o.a_s_emoji[0]
+                                                        }),
+                                                        o?.v_o_model_info?.a_o_type_output.map(o=>{
+                                                            o.a_s_emoji[0]
+                                                        })
+                                                    ].join(s_to)
+                                                    
                                                     return {
                                                         s_tag: 'option', 
                                                         selected: o == o_state.o_model,
                                                         value: o?.id,
-                                                        innerText: o?.id
+                                                        innerText: [
+                                                            o?.id, 
+                                                            (
+                                                                (s_icons) 
+                                                                    ? s_icons
+                                                                    : false
+                                                            )
+                                                        ].filter(v=>v).join(' - ')
                                                     }
                                                 })
                                             ], 
@@ -336,21 +432,25 @@ document.body.appendChild(
                         Object.assign(
                             o_state,
                             {
-                                o_js__s_input: {
+                                o_js__input: {
                                     f_o_jsh: ()=> {
                                         return {
-                                            s_tag: "textarea", 
-                                            rows: 5,
-                                            value: o_state.s_prompt,
-                                            oninput: (o_e)=>{
-                                                o_state.s_prompt = o_e.target.value;
-                                                o_state?.o_js__price_estimation?._f_render();
-                                            }
-                                        }
+                                            a_o: [
+                                                {   
+                                                    s_tag: "textarea", 
+                                                    rows: 5,
+                                                    value: o_state.s_prompt,
+                                                    oninput: (o_e)=>{
+                                                        o_state.s_prompt = o_e.target.value;
+                                                        o_state?.o_js__price_estimation?._f_render();
+                                                    }
+                                                }
+                                            ]
+                                        } 
                                     }
                                 }
                             }
-                        ).o_js__s_input, 
+                        ).o_js__input, 
                         Object.assign(
                             o_state,
                             {
