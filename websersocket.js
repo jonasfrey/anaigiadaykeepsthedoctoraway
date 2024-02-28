@@ -136,25 +136,25 @@ let f_handler = async function(o_request){
         o_request,
         `${s_path_folder_current}/localhost/`
     )
-
 }
+let s_name_host = (Deno.hostname == '11235.ch') ? '188.166.95.225' : 'localhost';
+
 
 await f_websersocket_serve(
     [
         {
             n_port: 8080,
             b_https: false,
-            s_hostname: 'localhost',
+            s_hostname: s_name_host,
             f_v_before_return_response: f_handler
         },
         ...[
             (!b_deno_deploy) ? {
                 n_port: 8443,
                 b_https: true,
-                s_hostname: 'localhost',
+                s_hostname: s_name_host,
                 f_v_before_return_response: f_handler
             } : false
         ].filter(v=>v)
-        
     ]
 )
