@@ -137,7 +137,7 @@ let f_handler = async function(o_request){
         `${s_path_folder_current}/localhost/`
     )
 }
-let s_name_host = (Deno.hostname == '11235.ch') ? '188.166.95.225' : 'localhost';
+let s_name_host = (Deno.hostname() == '11235.ch') ? '188.166.95.225' : 'localhost';
 
 
 await f_websersocket_serve(
