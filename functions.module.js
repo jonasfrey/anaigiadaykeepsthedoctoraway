@@ -1,4 +1,3 @@
-import OpenAI from "openai";
 import { f_a_o_model_pricing } from "./pricing.js";
 
 const o_url_script = new URL(import.meta.url);
@@ -18,12 +17,18 @@ let f_o_config = async function(){
 let f_a_o_model = async function(){
     let o_config = await f_o_config();
 
-    const o_openai = new OpenAI(
+
+    let v = await( await fetch(
+        `https://api.openai.com/v1/models`, 
         {
-            apiKey: o_config.s_api_key
+            method: "GET",
+            headers: {
+                "Content-Type":"application/json",
+                "Authorization":`Bearer ${o_config.s_api_key}`
+            }, 
         }
-    );
-    let v = await o_openai.models.list()
+    )).json();
+
     let a_o = v?.data;
     let a_o_model_pricing = await f_a_o_model_pricing(true);
     a_o.map(o=>{
@@ -46,17 +51,28 @@ let f_o_completion = async function(
     
     let o_config = await f_o_config();
 
-    const o_openai = new OpenAI(
+    let o_resp = await fetch(
+        `https://api.openai.com/v1/chat/completions`, 
         {
-            apiKey: o_config.s_api_key
+            method: "POST",
+            headers: {
+                "Content-Type":"application/json",
+                "Authorization":`Bearer ${o_config.s_api_key}`
+            }, 
+            body: JSON.stringify({
+                // stream: true, 
+                model: s_model, 
+                messages: [
+                    {
+                        "role": "user",
+                        "content": s_prompt
+                    }
+                ]
+            })
         }
-    );
-    const o_completion = await o_openai.chat.completions.create({
-        messages: [{ role: "system", content: s_prompt }],
-        model: s_model,
-    });
+    )
 
-    return o_completion
+    return o_resp.json()
 }
 
 
