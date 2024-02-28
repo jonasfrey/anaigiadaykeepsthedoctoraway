@@ -136,8 +136,8 @@ let f_s_time = function(n_ms_ts){
     ].join(':')
 }
 
-let n_port = 8080;
-let s_url_api = `${window.location.protocol}//${window.location.hostname}:${n_port}`
+let s_port = window.location.port;
+let s_url_api = `${window.location.protocol}//${window.location.hostname}:${s_port}`
 let o_state = {
     b_display_settings: false, 
     o_message_out: null,
