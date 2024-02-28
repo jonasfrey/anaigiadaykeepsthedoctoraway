@@ -11,7 +11,7 @@ import {
 const o_url_script = new URL(import.meta.url);
 const s_path_abs_folder_current_script = o_url_script.pathname.split('/').slice(0,-1).join('/');    
 
-const s_path_rel_file_o__cached = `./o_pricing.json`;
+const s_path_rel_file_o__cached = `./o_pricing.gitignored.json`;
 const s_path_abs_file_o__cached = `${s_path_abs_folder_current_script}/${s_path_rel_file_o__cached}`;
 
 
