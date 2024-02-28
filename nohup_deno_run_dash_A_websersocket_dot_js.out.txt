@@ -1,0 +1,89 @@
+starging server with o_config
+n_port: 8080
+b_https: false
+s_hostname: localhost
+f_v_before_return_response: async function(o_request){
+    // important if the connection is secure (https),
+    // the socket has to be opened with the wss:// protocol
+    // from the client
+    // for client: const socket = new WebSocket(`${window.location.protocol.replace('http', 'ws')}//${window.location.host}`);
+
+    let o_url = new URL(o_request.url);
+    let o_request_data = null;
+    try {
+        o_request_data = (await o_request.json())
+    } catch (error) {
+    }
+    let a_s_name_funtion = Object.keys(o_s_name_function_f__exposed);
+    if(o_request_data?.s_name_function){
+
+        let f = o_s_name_function_f__exposed[o_request_data.s_name_function];
+        if(!f){
+            return new Response(
+                JSON.stringify(
+                    {
+                        b_success: false, 
+                        s_msg: `function '${o_request_data.s_name_function}' is not available , available are ${a_s_name_funtion.join(',')}`
+                    }
+                )
+            )
+        }
+        if(f){
+            return await f(...(o_request_data?.a_v_arg) ? o_request_data?.a_v_arg : [])
+        }
+    }
+    
+
+    if(o_url.pathname == '/'){
+
+        return new Response(
+            await Deno.readTextFile(
+                `${s_path_folder_current}/localhost/client.html`
+            ),
+            { 
+                headers: {
+                    'Content-type': "text/html"
+                }
+            }
+        );
+    }
+    if(o_url.pathname == '/stream'){
+
+        let timer = undefined;
+        const body = new ReadableStream({
+          start(controller) {
+            timer = setInterval(() => {
+              const message = `It is ${new Date().toISOString()}\n`;
+              controller.enqueue(new TextEncoder().encode(message));
+            }, 1000);
+          },
+          cancel() {
+            if (timer !== undefined) {
+              clearInterval(timer);
+            }
+          },
+        });
+        return new Response(body, {
+          headers: {
+            "content-type": "text/plain",
+            "x-content-type-options": "nosniff",
+          },
+        });
+        
+    }
+
+
+    return f_v_before_return_response__fileserver(
+        o_request,
+        `${s_path_folder_current}/localhost/`
+    )
+}
+port: 8080
+hostname: localhost
+[0m[1m[31merror[0m: Uncaught (in promise) AddrInUse: Address already in use (os error 98)
+        Deno.serve(
+[0m[31m             ^[0m
+    at [0m[1m[3mlisten[0m ([0m[36mext:deno_net/01_net.js[0m:[0m[33m433[0m:[0m[33m39[0m)
+    at [0m[1m[3mObject.serve[0m ([0m[36mext:deno_http/00_serve.js[0m:[0m[33m596[0m:[0m[33m16[0m)
+    at [0m[1m[3mf_websersocket_serve[0m ([0m[36mhttps://deno.land/x/websersocket@0.2/mod.js[0m:[0m[33m162[0m:[0m[33m14[0m)
+    at [0m[36mfile:///home/jf18j492/code/openai_api_consumer/websersocket_a003f17a-e875-4af3-a676-0709fc3ecf3f.js[0m:[0m[33m143[0m:[0m[33m7[0m
