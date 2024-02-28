@@ -8,6 +8,9 @@ import {
     f_o_test
 } from "https://deno.land/x/deno_test_server_and_client_side@1.1/mod.js"
 
+// import showdown from './showdownjs-showdown-7cbadb8/dist/showdown.min.js';
+let o_showdown_md_to_html_converter = new showdown.Converter();
+// console.log(showdown)
 import {
     f_add_css,
     f_s_css_prefixed,
@@ -37,7 +40,27 @@ o_variables.n_rem_font_size_base = 1.2 // adjust font size, other variables can 
 o_variables.n_rem_padding_interactive_elements = 0.6; // adjust padding for interactive elements 
 f_add_css(
     `
-
+    /* Style for code blocks */
+    pre code {
+        display: block;
+        padding: 0.5em;
+        overflow-x: auto;
+        background-color: #f6f8fa; /* Light grey background */
+        border: 1px solid #ccc; /* Border around the code block */
+        border-radius: 4px; /* Rounded corners */
+    }
+    
+    /* Style for inline code */
+    code {
+        padding: 0.2em 0.4em;
+        background-color: rgba(27,31,35,0.05); /* Light grey background */
+        border-radius: 3px; /* Rounded corners */
+    }
+    
+    /* Ensure strong text is bold */
+    strong {
+        font-weight: bold;
+    }
     .o_message {
         position: relative;
         padding: .6rem;
@@ -68,13 +91,15 @@ f_add_css(
     @supports (font-variation-settings: normal) {
         :root { font-family: InterVariable, sans-serif; }
     }
+    h1, h2, h3, h4, h5, h6, p, li, div {
+        line-height: 150% !important;
+    }
     .app{
         max-width: 900px;
         margin: 0 auto;
         font-family: Inter, sans-serif;
         font-weight: 300;
         font-style: normal;
-        line-height:150%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -114,6 +139,7 @@ let f_s_time = function(n_ms_ts){
 let n_port = 8080;
 let s_url_api = `${window.location.protocol}//${window.location.hostname}:${n_port}`
 let o_state = {
+    b_display_settings: false, 
     o_message_out: null,
     o_tmp: null,
     n_id_wsi: 0,
@@ -133,7 +159,7 @@ let o_state = {
         ))
     ).json(), 
     o_model: null, 
-    s_prompt: 'tell me a long joke!',
+    s_prompt: 'make a text with the most common markdown elements that i can use to test my markdown to html script toghteher with my css styling',
     a_o_message: []
 }
 
@@ -156,6 +182,10 @@ let f_scroll_down = function(){
     if(o){
         o?.scrollTo(0, o?.scrollHeight)
     }
+    hljs.initHighlightingOnLoad({
+        style: 'agate' // This will change the theme to Monokai
+      });
+    hljs.highlightAll();
 }
 let f_n_tokens_from_s = function(s){
     // https://platform.openai.com/tokenizer
@@ -203,11 +233,24 @@ let f_a_o_js_coins__from_n = function(n_cent){
          }
      })
 }
+
 document.body.appendChild(
     await f_o_html__and_make_renderable(
         {
             class: "app",
             a_o: [
+                Object.assign(
+                    o_state, 
+                    {
+                        o_js__settings: {
+                            f_o_jsh: ()=>{
+                                return {
+                                    innerText: 'hi'
+                                }
+                            }
+                        }      
+                    }
+                ).o_js__settings,
                 Object.assign(
                     o_state,
                     {
@@ -246,7 +289,11 @@ document.body.appendChild(
                                                         style: [
                                                             'max-width: 90%', 
                                                         ].join(';'),
-                                                        innerText: o.s_content
+                                                        
+                                                        innerHTML:  marked.parse(
+                                                        // innerHTML:  o_showdown_md_to_html_converter.makeHtml(
+                                                            o.s_content
+                                                        )
                                                     }
                                                 ]
                                             }
@@ -352,91 +399,127 @@ document.body.appendChild(
                                         o_state.s_prompt, 
                                         f_n_tokens_from_s(o_state.s_prompt)
                                     );
-                                    o_state.o_tmp = await(
-                                        await(fetch(
-                                            o_state.s_url_api,
-                                            {
-                                                method: "POST", 
-                                                headers: {
-                                                    "Content-Type": "application/json",
-                                                    // 'Content-Type': 'application/x-www-form-urlencoded',
-                                                },
-                                                body: JSON.stringify({
-                                                    s_name_function: 'f_s_json__o_completion',
-                                                    a_v_arg: [
-                                                        crypto.randomUUID(),
-                                                        o_state.s_prompt, 
-                                                        o_state.o_model.id, 
-                                                    ]
-                                                }),
-                                            }
-                                        ))
-                                    ).json()
-                                    let s_out = o_state.o_tmp.s_out_tmp
+
                                     o_state.o_message_out = new O_message(
                                         new Date().getTime(),
-                                        s_out, 
-                                        f_n_tokens_from_s(s_out),
+                                        '', 
+                                        f_n_tokens_from_s(''),
                                         o_state.o_tmp
                                     );
         
                                     o_state.a_o_message.push(o_message_in);
                                     o_state.a_o_message.push(o_state.o_message_out);
-        
-                                    o_state.s_prompt = '';
-                                    await Promise.all(
-                                        [
-                                            o_state?.o_js__price_estimation?._f_render(),   
-                                            o_state.o_js__s_input._f_render(),
-                                            o_state.o_js__s_output._f_render(),
-                                        ]
-                                    )
-                                    f_scroll_down();
-                                    let f_update = async function(){
-                                        let o_tmp = await(
-                                            await(fetch(
-                                                o_state.s_url_api,
-                                                {
-                                                    method: "POST", 
-                                                    headers: {
-                                                        "Content-Type": "application/json",
-                                                        // 'Content-Type': 'application/x-www-form-urlencoded',
-                                                    },
-                                                    body: JSON.stringify({
-                                                        s_name_function: 'f_s_json__o_completion',
-                                                        a_v_arg: [
-                                                            o_state.o_tmp.s_uuidv4,
-                                                        ]
-                                                    }),
-                                                }
-                                            ))
-                                        ).json()
-                                        console.log(o_tmp);
-                                        console.log(o_state.o_tmp);
-                                        if(o_tmp.n_ms_wpn != o_state.o_tmp.n_ms_wpn){
-                                            o_state.o_tmp = o_tmp
-                                            let s_out = o_state.o_message_out.s_content+o_state.o_tmp.s_out_tmp
-                                            o_state.o_message_out.s_content = s_out;
-                                            o_state.o_message_out.n_tokens_estimated = f_n_tokens_from_s(s_out);
-                                            console.log({n_id: o_state.n_id_wsi})
-    
-                                            await Promise.all(
-                                                [
-                                                    o_state?.o_js__price_estimation?._f_render(),   
-                                                    o_state.o_js__s_input._f_render(),
-                                                    o_state.o_js__s_output._f_render(),
-                                                ]
-                                            )
-                                            f_scroll_down();
-                                        }
-                                        await f_sleep_n_ms(1000)
-                                        if(!o_state.o_tmp.b_done){
-                                            await f_update()
+                                    let s_tmp = '';
+
+                                    let f_processChunk = function(chunkStr) {
+                                    s_tmp += chunkStr;
+                                    let delimiterIndex;
+                                    // Assuming SSE-like messages end with double newlines
+                                    while ((delimiterIndex = s_tmp.indexOf('\n\n')) !== -1) {
+                                        const message = s_tmp.substring(0, delimiterIndex);
+                                        s_tmp = s_tmp.substring(delimiterIndex + 2);
+
+                                        if (message.startsWith('data: ')) {
+                                        const data = message.substring(6);
+                                        // Process the data portion here
                                         }
                                     }
-                                    f_update();
+                                    }
+                                    let o_reader = null;
+                                    let f_process_a_n_u8 = function(v){
+                                        console.log(v)
+                                        // console.log(
+                                        //     {
+                                        //         a_n_u8, 
+                                        //         s: new TextDecoder.decode(a_n_u8)
+                                        //     }
+                                        // )
+                                        // if()
+                                    }
+
+                                    fetch(
+                                        o_state.s_url_api,
+                                        {
+                                            method: "POST", 
+                                            headers: {
+                                                "Content-Type": "application/json",
+                                                // 'Content-Type': 'application/x-www-form-urlencoded',
+                                            },
+                                            body: JSON.stringify({
+                                                s_name_function: 'f_o_stream__o_completion',
+                                                a_v_arg: [
+                                                    o_state.s_prompt, 
+                                                    o_state.o_model.id,
+                                                ]
+                                            }),
+                                        }
+                                    )
+                                    .then(async o_response => {
+                                        if(!o_response.ok){
+                                            throw new Error(`HTTP error! status: ${o_response.status}`);
+                                        }
+                                        o_reader = o_response.body.getReader();
+                                        let o = {done:false}
+
+                                        while(!o.done){
+                                            o = await o_reader.read();
+                                            let a_n_u8 = o.value;
+                                            let s = new TextDecoder().decode(a_n_u8);
+                                            let a_o = s.split('\n\n').map(async s=>{
+                                                let s_json = s.substring('data: '.length);
+                                                if(['', '[DONE]'].includes(s_json.trim())){return false}
+                                                console.log(s_json)
+                                                let o = JSON.parse(s_json);
+                                                o_state.o_message_out.n_ms_ts = o.created*1000;
+                                                console.log(o_state.o_message_out.n_ms_ts)
+                                                o_state.o_message_out.v_o_completion = o;
+                                                if(o?.choices?.[0]?.delta?.content){
+                                                    o_state.o_message_out.s_content += o.choices[0].delta.content
+                                                }
+
+                                                return o
+                                            });
+
+                                            await o_state.o_js__s_output._f_render(),
+                                            f_scroll_down();
+                                        }
+
+                                        // o_reader.read().then(function f_process_read_returnvalue({ done, value }) {
+                                        //     // Result objects contain two properties:
+                                        //     // done  - true if the stream has already given you all its data.
+                                        //     // value - some data. Always undefined when done is true.
+                                        //     if (done) {
+                                        //       console.log("Stream complete");
+                                        //       return;
+                                        //     }
+                                        //     let a_n_u8 = value;
+                                        //     let s = new TextDecoder().decode(a_n_u8);
+                                        //     console.log(s)
+                                        
+                                        //     // Read some more, and call this function again
+                                        //     return o_reader.read().then(f_process_read_returnvalue);
+                                        //   });
+
+                                    })
+                                    // .then(stream => {
+                                    //   console.log(stream)
+                                    //     // The new stream can be consumed directly
+                                    //   return new Response(stream).text();
+                                    // })
+                                    // .then(text => {
+                                    //     console.log(text)
+                                    //   console.log(text);
+                                    //   // Process the text
+                                    // })
+                                    .catch(error => {
+                                      console.error('Fetch error:', error);
+                                    });
+                                    
 
 
+
+        
+                                    // o_state.s_prompt = '';
 
                                 }
                             }
