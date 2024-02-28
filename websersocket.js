@@ -3,23 +3,17 @@ import {
     f_websersocket_serve,
     f_v_before_return_response__fileserver
 } from "https://deno.land/x/websersocket@0.2/mod.js"
-import { f_a_o_model, f_o_completion } from "./functions.module.js";
+import { f_a_o_model, f_o_completion, f_o_completion_tmp } from "./functions.module.js";
 
 let s_path_file_current = new URL(import.meta.url).pathname;
 let s_path_folder_current = s_path_file_current.split('/').slice(0, -1).join('/');
 // console.log(s_path_folder_current)
 const b_deno_deploy = Deno.env.get("DENO_DEPLOYMENT_ID") !== undefined;
 
+let o_completion_tmp = {};
 
-let f_handler = async function(o_request){
-    // important if the connection is secure (https),
-    // the socket has to be opened with the wss:// protocol
-    // from the client
-    // for client: const socket = new WebSocket(`${window.location.protocol.replace('http', 'ws')}//${window.location.host}`);
-
-    let o_url = new URL(o_request.url);
-    
-    if(o_url.pathname == '/a_o_model'){
+let o_s_name_function_f__exposed = {
+    f_s_json__a_o_model: async function(){
         return new Response(
             JSON.stringify(
                 await f_a_o_model()
@@ -30,12 +24,16 @@ let f_handler = async function(o_request){
                 }
             }
         )
-    }
-    if(o_url.pathname == '/o_completion'){
-        let o_request_data =   (await o_request.json())
+    },
+    f_s_json__o_completion: async function(){
+
+
+
         return new Response(
             JSON.stringify(
-                await f_o_completion(o_request_data.s_prompt, o_request_data.s_model)
+                await f_o_completion_tmp(
+                    ...arguments
+                )
             ),
             {
                 headers: {
@@ -44,9 +42,43 @@ let f_handler = async function(o_request){
             }
         )
     }
+}
 
+
+let f_handler = async function(o_request){
+    // important if the connection is secure (https),
+    // the socket has to be opened with the wss:// protocol
+    // from the client
+    // for client: const socket = new WebSocket(`${window.location.protocol.replace('http', 'ws')}//${window.location.host}`);
+
+    let o_url = new URL(o_request.url);
+    let o_request_data = null;
+    try {
+        o_request_data = (await o_request.json())
+    } catch (error) {
+    }
+    let a_s_name_funtion = Object.keys(o_s_name_function_f__exposed);
+    if(o_request_data?.s_name_function){
+
+        let f = o_s_name_function_f__exposed[o_request_data.s_name_function];
+        if(!f){
+            return new Response(
+                JSON.stringify(
+                    {
+                        b_success: false, 
+                        s_msg: `function '${o_request_data.s_name_function}' is not available , available are ${a_s_name_funtion.join(',')}`
+                    }
+                )
+            )
+        }
+        if(f){
+            return await f(...(o_request_data?.a_v_arg) ? o_request_data?.a_v_arg : [])
+        }
+    }
     
+
     if(o_url.pathname == '/'){
+
         return new Response(
             await Deno.readTextFile(
                 `${s_path_folder_current}/localhost/client.html`
@@ -57,6 +89,30 @@ let f_handler = async function(o_request){
                 }
             }
         );
+    }
+    if(o_url.pathname == '/stream'){
+
+        let timer = undefined;
+        const body = new ReadableStream({
+          start(controller) {
+            timer = setInterval(() => {
+              const message = `It is ${new Date().toISOString()}\n`;
+              controller.enqueue(new TextEncoder().encode(message));
+            }, 1000);
+          },
+          cancel() {
+            if (timer !== undefined) {
+              clearInterval(timer);
+            }
+          },
+        });
+        return new Response(body, {
+          headers: {
+            "content-type": "text/plain",
+            "x-content-type-options": "nosniff",
+          },
+        });
+        
     }
 
 

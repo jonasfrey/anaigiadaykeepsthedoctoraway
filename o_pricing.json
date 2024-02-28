@@ -1,0 +1,588 @@
+{
+    "a_o_section": [
+        {
+            "s_inner_text": "CloseSearch Submit ",
+            "a_o_table": []
+        },
+        {
+            "s_inner_text": "Skip to main contentSite NavigationResearchOverviewIndexGPT-4DALL·E 3SoraAPIOverviewPricingDocsChatGPTOverviewTeamEnterprisePricingTry ChatGPTSafetyCompanyAboutBlogCareersResidencyCharterSecurityCustomer storiesSearch Navigation quick links Log inTry ChatGPTMenu",
+            "a_o_table": []
+        },
+        {
+            "s_inner_text": "CloseSite NavigationResearchOverviewIndexGPT-4DALL·E 3SoraAPIOverviewPricingDocsChatGPTOverviewTeamEnterprisePricingTry ChatGPTSafetyCompanyAboutBlogCareersResidencyCharterSecurityCustomer stories Quick Links Log inTry ChatGPTSearch Submit ",
+            "s_heading": "Research",
+            "a_o_table": []
+        },
+        {
+            "s_inner_text": "PricingSimple and flexible. Only pay for what you use.Quick linksContact salesLearn more",
+            "a_o_table": []
+        },
+        {
+            "s_inner_text": "Language modelsMultiple models, each with different capabilities and price points. Prices are per 1,000 tokens. You can think of tokens as pieces of words, where 1,000 tokens is about 750 words. This paragraph is 35 tokens.",
+            "a_o_table": []
+        },
+        {
+            "s_inner_text": "GPT-4 TurboWith 128k context, fresher knowledge and the broadest set of capabilities, GPT-4 Turbo is more powerful than GPT-4 and offered at a lower price.Learn about GPT-4 TurboModelInputOutputgpt-4-0125-preview$0.01 / 1K tokens$0.03 / 1K tokensgpt-4-1106-preview$0.01 / 1K tokens$0.03 / 1K tokensgpt-4-1106-vision-preview$0.01 / 1K tokens$0.03 / 1K tokensgpt-4-0125-previewInput$0.01 / 1K tokensOutput$0.03 / 1K tokensgpt-4-1106-previewInput$0.01 / 1K tokensOutput$0.03 / 1K tokensgpt-4-1106-vision-previewInput$0.01 / 1K tokensOutput$0.03 / 1K tokensVision pricing calculatorpxbypx=$0.00255Low resolution=$0.00255Price per 1K tokens (fixed)$0.01Resized width150Resized height150512 × 512 tiles1 × 1Total tiles1 Base tokens85Tile tokens170 × 1 = 170Total tokens255Total price $0.00255",
+            "s_heading": "GPT-4 Turbo",
+            "a_o_table": [
+                {
+                    "a_o_entry": [
+                        {
+                            "Model": "gpt-4-0125-preview",
+                            "o_input": {
+                                "n_price_dollars": 0.01,
+                                "n_tokens": 1000,
+                                "n_price_dimes_per_token": 0.0001,
+                                "n_price_cents_per_token": 0.001,
+                                "n_price_dollars_per_token": 0.00001
+                            },
+                            "Input": "$0.01 / 1K tokens",
+                            "o_output": {
+                                "n_price_dollars": 0.03,
+                                "n_tokens": 1000,
+                                "n_price_dimes_per_token": 0.0003,
+                                "n_price_cents_per_token": 0.003,
+                                "n_price_dollars_per_token": 0.000029999999999999997
+                            },
+                            "Output": "$0.03 / 1K tokens"
+                        },
+                        {
+                            "Model": "gpt-4-1106-preview",
+                            "o_input": {
+                                "n_price_dollars": 0.01,
+                                "n_tokens": 1000,
+                                "n_price_dimes_per_token": 0.0001,
+                                "n_price_cents_per_token": 0.001,
+                                "n_price_dollars_per_token": 0.00001
+                            },
+                            "Input": "$0.01 / 1K tokens",
+                            "o_output": {
+                                "n_price_dollars": 0.03,
+                                "n_tokens": 1000,
+                                "n_price_dimes_per_token": 0.0003,
+                                "n_price_cents_per_token": 0.003,
+                                "n_price_dollars_per_token": 0.000029999999999999997
+                            },
+                            "Output": "$0.03 / 1K tokens"
+                        },
+                        {
+                            "Model": "gpt-4-1106-vision-preview",
+                            "o_input": {
+                                "n_price_dollars": 0.01,
+                                "n_tokens": 1000,
+                                "n_price_dimes_per_token": 0.0001,
+                                "n_price_cents_per_token": 0.001,
+                                "n_price_dollars_per_token": 0.00001
+                            },
+                            "Input": "$0.01 / 1K tokens",
+                            "o_output": {
+                                "n_price_dollars": 0.03,
+                                "n_tokens": 1000,
+                                "n_price_dimes_per_token": 0.0003,
+                                "n_price_cents_per_token": 0.003,
+                                "n_price_dollars_per_token": 0.000029999999999999997
+                            },
+                            "Output": "$0.03 / 1K tokens"
+                        }
+                    ]
+                },
+                {
+                    "a_o_entry": [
+                        {
+                            "Price per 1K tokens (fixed)": "Resized width",
+                            "$0.01": "150"
+                        },
+                        {
+                            "Price per 1K tokens (fixed)": "Resized height",
+                            "$0.01": "150"
+                        },
+                        {
+                            "Price per 1K tokens (fixed)": "512 × 512 tiles",
+                            "$0.01": "1 × 1"
+                        },
+                        {
+                            "Price per 1K tokens (fixed)": "Total tiles",
+                            "$0.01": "1 "
+                        },
+                        {
+                            "Price per 1K tokens (fixed)": "Base tokens",
+                            "$0.01": "85"
+                        },
+                        {
+                            "Price per 1K tokens (fixed)": "Tile tokens",
+                            "$0.01": "170 × 1 = 170"
+                        },
+                        {
+                            "Price per 1K tokens (fixed)": "Total tokens",
+                            "$0.01": "255"
+                        },
+                        {
+                            "Price per 1K tokens (fixed)": "Total price",
+                            "$0.01": " $0.00255"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "s_inner_text": "GPT-4With broad general knowledge and domain expertise, GPT-4 can follow complex instructions in natural language and solve difficult problems with accuracy.Learn about GPT-4ModelInputOutputgpt-4$0.03 / 1K tokens$0.06 / 1K tokensgpt-4-32k$0.06 / 1K tokens$0.12 / 1K tokensgpt-4Input$0.03 / 1K tokensOutput$0.06 / 1K tokensgpt-4-32kInput$0.06 / 1K tokensOutput$0.12 / 1K tokens",
+            "s_heading": "GPT-4",
+            "a_o_table": [
+                {
+                    "a_o_entry": [
+                        {
+                            "Model": "gpt-4",
+                            "o_input": {
+                                "n_price_dollars": 0.03,
+                                "n_tokens": 1000,
+                                "n_price_dimes_per_token": 0.0003,
+                                "n_price_cents_per_token": 0.003,
+                                "n_price_dollars_per_token": 0.000029999999999999997
+                            },
+                            "Input": "$0.03 / 1K tokens",
+                            "o_output": {
+                                "n_price_dollars": 0.06,
+                                "n_tokens": 1000,
+                                "n_price_dimes_per_token": 0.0006,
+                                "n_price_cents_per_token": 0.006,
+                                "n_price_dollars_per_token": 0.000059999999999999995
+                            },
+                            "Output": "$0.06 / 1K tokens"
+                        },
+                        {
+                            "Model": "gpt-4-32k",
+                            "o_input": {
+                                "n_price_dollars": 0.06,
+                                "n_tokens": 1000,
+                                "n_price_dimes_per_token": 0.0006,
+                                "n_price_cents_per_token": 0.006,
+                                "n_price_dollars_per_token": 0.000059999999999999995
+                            },
+                            "Input": "$0.06 / 1K tokens",
+                            "o_output": {
+                                "n_price_dollars": 0.12,
+                                "n_tokens": 1000,
+                                "n_price_dimes_per_token": 0.0012,
+                                "n_price_cents_per_token": 0.012,
+                                "n_price_dollars_per_token": 0.00011999999999999999
+                            },
+                            "Output": "$0.12 / 1K tokens"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "s_inner_text": "GPT-3.5 TurboGPT-3.5 Turbo models are capable and cost-effective.gpt-3.5-turbo-0125 is the flagship model of this family, supports a 16K context window and is optimized for dialog.gpt-3.5-turbo-instruct is an Instruct model and only supports a 4K context window.Learn about GPT-3.5 TurboModelInputOutputgpt-3.5-turbo-0125$0.0005 / 1K tokens$0.0015 / 1K tokensgpt-3.5-turbo-instruct$0.0015 / 1K tokens$0.0020 / 1K tokensgpt-3.5-turbo-0125Input$0.0005 / 1K tokensOutput$0.0015 / 1K tokensgpt-3.5-turbo-instructInput$0.0015 / 1K tokensOutput$0.0020 / 1K tokens",
+            "s_heading": "GPT-3.5 Turbo",
+            "a_o_table": [
+                {
+                    "a_o_entry": [
+                        {
+                            "Model": "gpt-3.5-turbo-0125",
+                            "o_input": {
+                                "n_price_dollars": 0.0005,
+                                "n_tokens": 1000,
+                                "n_price_dimes_per_token": 0.000005,
+                                "n_price_cents_per_token": 0.00005,
+                                "n_price_dollars_per_token": 5e-7
+                            },
+                            "Input": "$0.0005 / 1K tokens",
+                            "o_output": {
+                                "n_price_dollars": 0.0015,
+                                "n_tokens": 1000,
+                                "n_price_dimes_per_token": 0.000014999999999999999,
+                                "n_price_cents_per_token": 0.00015,
+                                "n_price_dollars_per_token": 0.0000015
+                            },
+                            "Output": "$0.0015 / 1K tokens"
+                        },
+                        {
+                            "Model": "gpt-3.5-turbo-instruct",
+                            "o_input": {
+                                "n_price_dollars": 0.0015,
+                                "n_tokens": 1000,
+                                "n_price_dimes_per_token": 0.000014999999999999999,
+                                "n_price_cents_per_token": 0.00015,
+                                "n_price_dollars_per_token": 0.0000015
+                            },
+                            "Input": "$0.0015 / 1K tokens",
+                            "o_output": {
+                                "n_price_dollars": 0.002,
+                                "n_tokens": 1000,
+                                "n_price_dimes_per_token": 0.00002,
+                                "n_price_cents_per_token": 0.0002,
+                                "n_price_dollars_per_token": 0.000002
+                            },
+                            "Output": "$0.0020 / 1K tokens"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "s_inner_text": "Assistants APIAssistants API and tools (retrieval, code interpreter) make it easy for developers to build AI assistants within their own applications. Each assistant incurs its own retrieval file storage fee based on the files passed to that assistant. The retrieval tool chunks and indexes your files content in our vector database. Learn moreThe tokens used for the Assistant API are billed at the chosen language model's per-token input / output rates and the assistant intelligently chooses which context from the thread to include when calling the model Learn about Assistants APIToolInputCode interpreter$0.03 / sessionRetrieval$0.20 / GB / assistant / day (free until 04/01/2024)Code interpreterInput$0.03 / sessionRetrievalInput$0.20 / GB / assistant / day (free until 04/01/2024)",
+            "s_heading": "Assistants API",
+            "a_o_table": [
+                {
+                    "a_o_entry": [
+                        {
+                            "Tool": "Code interpreter",
+                            "o_input": {
+                                "n_price_dollars": 0.03,
+                                "n_tokens": null,
+                                "n_price_dimes_per_token": null,
+                                "n_price_cents_per_token": null,
+                                "n_price_dollars_per_token": null
+                            },
+                            "Input": "$0.03 / session"
+                        },
+                        {
+                            "Tool": "Retrieval",
+                            "o_input": {
+                                "n_price_dollars": 0.2,
+                                "n_tokens": null,
+                                "n_price_dimes_per_token": null,
+                                "n_price_cents_per_token": null,
+                                "n_price_dollars_per_token": null
+                            },
+                            "Input": "$0.20 / GB / assistant / day (free until 04/01/2024)"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "s_inner_text": "Fine-tuning modelsCreate your own custom models by fine-tuning our base models with your training data. Once you fine-tune a model, you’ll be billed only for the tokens you use in requests to that model.Learn about fine-tuningModelTrainingInput usageOutput usagegpt-3.5-turbo$0.0080 / 1K tokens$0.0030 / 1K tokens$0.0060 / 1K tokensdavinci-002$0.0060 / 1K tokens$0.0120 / 1K tokens$0.0120 / 1K tokensbabbage-002$0.0004 / 1K tokens$0.0016 / 1K tokens$0.0016 / 1K tokensgpt-3.5-turboTraining$0.0080 / 1K tokensInput usage$0.0030 / 1K tokensOutput usage$0.0060 / 1K tokensdavinci-002Training$0.0060 / 1K tokensInput usage$0.0120 / 1K tokensOutput usage$0.0120 / 1K tokensbabbage-002Training$0.0004 / 1K tokensInput usage$0.0016 / 1K tokensOutput usage$0.0016 / 1K tokens",
+            "s_heading": "Fine-tuning models",
+            "a_o_table": [
+                {
+                    "a_o_entry": [
+                        {
+                            "Model": "gpt-3.5-turbo",
+                            "o_usage": {
+                                "n_price_dollars": 0.008,
+                                "n_tokens": 1000,
+                                "n_price_dimes_per_token": 0.00008,
+                                "n_price_cents_per_token": 0.0008,
+                                "n_price_dollars_per_token": 0.000008
+                            },
+                            "Training": "$0.0080 / 1K tokens",
+                            "Input usage": "$0.0030 / 1K tokens",
+                            "Output usage": "$0.0060 / 1K tokens"
+                        },
+                        {
+                            "Model": "davinci-002",
+                            "o_usage": {
+                                "n_price_dollars": 0.006,
+                                "n_tokens": 1000,
+                                "n_price_dimes_per_token": 0.000059999999999999995,
+                                "n_price_cents_per_token": 0.0006,
+                                "n_price_dollars_per_token": 0.000006
+                            },
+                            "Training": "$0.0060 / 1K tokens",
+                            "Input usage": "$0.0120 / 1K tokens",
+                            "Output usage": "$0.0120 / 1K tokens"
+                        },
+                        {
+                            "Model": "babbage-002",
+                            "o_usage": {
+                                "n_price_dollars": 0.0004,
+                                "n_tokens": 1000,
+                                "n_price_dimes_per_token": 0.000004,
+                                "n_price_cents_per_token": 0.00004,
+                                "n_price_dollars_per_token": 4.0000000000000003e-7
+                            },
+                            "Training": "$0.0004 / 1K tokens",
+                            "Input usage": "$0.0016 / 1K tokens",
+                            "Output usage": "$0.0016 / 1K tokens"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "s_inner_text": "Embedding modelsBuild advanced search, clustering, topic modeling, and classification functionality with our embeddings offering.Learn about embeddingsModelUsagetext-embedding-3-small$0.00002 / 1K tokenstext-embedding-3-large$0.00013 / 1K tokensada v2$0.00010 / 1K tokenstext-embedding-3-smallUsage$0.00002 / 1K tokenstext-embedding-3-largeUsage$0.00013 / 1K tokensada v2Usage$0.00010 / 1K tokens",
+            "s_heading": "Embedding models",
+            "a_o_table": [
+                {
+                    "a_o_entry": [
+                        {
+                            "Model": "text-embedding-3-small",
+                            "o_usage": {
+                                "n_price_dollars": 0.00002,
+                                "n_tokens": 1000,
+                                "n_price_dimes_per_token": 2.0000000000000002e-7,
+                                "n_price_cents_per_token": 0.000002,
+                                "n_price_dollars_per_token": 2e-8
+                            },
+                            "Usage": "$0.00002 / 1K tokens"
+                        },
+                        {
+                            "Model": "text-embedding-3-large",
+                            "o_usage": {
+                                "n_price_dollars": 0.00013,
+                                "n_tokens": 1000,
+                                "n_price_dimes_per_token": 0.0000012999999999999998,
+                                "n_price_cents_per_token": 0.000013,
+                                "n_price_dollars_per_token": 1.3e-7
+                            },
+                            "Usage": "$0.00013 / 1K tokens"
+                        },
+                        {
+                            "Model": "ada v2",
+                            "o_usage": {
+                                "n_price_dollars": 0.0001,
+                                "n_tokens": 1000,
+                                "n_price_dimes_per_token": 0.000001,
+                                "n_price_cents_per_token": 0.00001,
+                                "n_price_dollars_per_token": 1.0000000000000001e-7
+                            },
+                            "Usage": "$0.00010 / 1K tokens"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "s_inner_text": "Base modelsGPT base models are not optimized for instruction-following and are less capable, but they can be effective when fine-tuned for narrow tasks.Learn about GPT base modelsModelUsagedavinci-002$0.0020 / 1K tokensbabbage-002$0.0004 / 1K tokensdavinci-002Usage$0.0020 / 1K tokensbabbage-002Usage$0.0004 / 1K tokens",
+            "s_heading": "Base models",
+            "a_o_table": [
+                {
+                    "a_o_entry": [
+                        {
+                            "Model": "davinci-002",
+                            "o_usage": {
+                                "n_price_dollars": 0.002,
+                                "n_tokens": 1000,
+                                "n_price_dimes_per_token": 0.00002,
+                                "n_price_cents_per_token": 0.0002,
+                                "n_price_dollars_per_token": 0.000002
+                            },
+                            "Usage": "$0.0020 / 1K tokens"
+                        },
+                        {
+                            "Model": "babbage-002",
+                            "o_usage": {
+                                "n_price_dollars": 0.0004,
+                                "n_tokens": 1000,
+                                "n_price_dimes_per_token": 0.000004,
+                                "n_price_cents_per_token": 0.00004,
+                                "n_price_dollars_per_token": 4.0000000000000003e-7
+                            },
+                            "Usage": "$0.0004 / 1K tokens"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "s_inner_text": "Other models",
+            "a_o_table": []
+        },
+        {
+            "s_inner_text": "Image modelsBuild DALL·E directly into your apps to generate and edit novel images and art. DALL·E 3 is the highest quality model and DALL·E 2 is optimized for lower cost.Learn about image generationModelQualityResolutionPriceDALL·E 3Standard1024×1024$0.040 / imageStandard1024×1792, 1792×1024$0.080 / imageDALL·E 3HD1024×1024$0.080 / imageHD1024×1792, 1792×1024$0.120 / imageDALL·E 21024×1024$0.020 / image512×512$0.018 / image256×256$0.016 / imageDALL·E 3QualityStandardResolution1024×1024Price$0.040 / imageQualityStandardResolution1024×1792, 1792×1024Price$0.080 / imageDALL·E 3QualityHDResolution1024×1024Price$0.080 / imageQualityHDResolution1024×1792, 1792×1024Price$0.120 / imageDALL·E 2QualityResolution1024×1024Price$0.020 / imageQualityResolution512×512Price$0.018 / imageQualityResolution256×256Price$0.016 / image",
+            "s_heading": "Image models",
+            "a_o_table": [
+                {
+                    "a_o_entry": [
+                        {
+                            "Model": "DALL·E 3",
+                            "Quality": "Standard",
+                            "Resolution": "1024×1024",
+                            "Price": "$0.040 / image"
+                        },
+                        {
+                            "Model": "",
+                            "Quality": "Standard",
+                            "Resolution": "1024×1792, 1792×1024",
+                            "Price": "$0.080 / image"
+                        },
+                        {
+                            "Model": "DALL·E 3",
+                            "Quality": "HD",
+                            "Resolution": "1024×1024",
+                            "Price": "$0.080 / image"
+                        },
+                        {
+                            "Model": "",
+                            "Quality": "HD",
+                            "Resolution": "1024×1792, 1792×1024",
+                            "Price": "$0.120 / image"
+                        },
+                        {
+                            "Model": "DALL·E 2",
+                            "Quality": "",
+                            "Resolution": "1024×1024",
+                            "Price": "$0.020 / image"
+                        },
+                        {
+                            "Model": "",
+                            "Quality": "",
+                            "Resolution": "512×512",
+                            "Price": "$0.018 / image"
+                        },
+                        {
+                            "Model": "",
+                            "Quality": "",
+                            "Resolution": "256×256",
+                            "Price": "$0.016 / image"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "s_inner_text": "Audio modelsWhisper can transcribe speech into text and translate many languages into English.Text-to-speech (TTS) can convert text into spoken audio.ModelUsageWhisper$0.006 / minute (rounded to the nearest second)TTS$0.015 / 1K charactersTTS HD$0.030 / 1K charactersWhisperUsage$0.006 / minute (rounded to the nearest second)TTSUsage$0.015 / 1K charactersTTS HDUsage$0.030 / 1K charactersPlease note that our Usage Policies require you to provide a clear disclosure to end users that the TTS voice they are hearing is AI-generated and not a human voice.",
+            "s_heading": "Audio models",
+            "a_o_table": [
+                {
+                    "a_o_entry": [
+                        {
+                            "Model": "Whisper",
+                            "o_usage": {
+                                "n_price_dollars": 0.006,
+                                "n_tokens": null,
+                                "n_price_dimes_per_token": null,
+                                "n_price_cents_per_token": null,
+                                "n_price_dollars_per_token": null
+                            },
+                            "Usage": "$0.006 / minute (rounded to the nearest second)"
+                        },
+                        {
+                            "Model": "TTS",
+                            "o_usage": {
+                                "n_price_dollars": 0.015,
+                                "n_tokens": null,
+                                "n_price_dimes_per_token": null,
+                                "n_price_cents_per_token": null,
+                                "n_price_dollars_per_token": null
+                            },
+                            "Usage": "$0.015 / 1K characters"
+                        },
+                        {
+                            "Model": "TTS HD",
+                            "o_usage": {
+                                "n_price_dollars": 0.03,
+                                "n_tokens": null,
+                                "n_price_dimes_per_token": null,
+                                "n_price_cents_per_token": null,
+                                "n_price_dollars_per_token": null
+                            },
+                            "Usage": "$0.030 / 1K characters"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "s_inner_text": "Older modelsWe continue to improve our models and periodically retire older, less used models.View pricing info for other older modelsModelInputOutputgpt-3.5-turbo-1106$0.0010 / 1K tokens$0.0020 / 1K tokensgpt-3.5-turbo-0613$0.0015 / 1K tokens$0.0020 / 1K tokensgpt-3.5-turbo-16k-0613$0.0030 / 1K tokens$0.0040 / 1K tokensgpt-3.5-turbo-0301$0.0015 / 1K tokens$0.0020 / 1K tokensgpt-3.5-turbo-1106Input$0.0010 / 1K tokensOutput$0.0020 / 1K tokensgpt-3.5-turbo-0613Input$0.0015 / 1K tokensOutput$0.0020 / 1K tokensgpt-3.5-turbo-16k-0613Input$0.0030 / 1K tokensOutput$0.0040 / 1K tokensgpt-3.5-turbo-0301Input$0.0015 / 1K tokensOutput$0.0020 / 1K tokens",
+            "s_heading": "Older models",
+            "a_o_table": [
+                {
+                    "a_o_entry": [
+                        {
+                            "Model": "gpt-3.5-turbo-1106",
+                            "o_input": {
+                                "n_price_dollars": 0.001,
+                                "n_tokens": 1000,
+                                "n_price_dimes_per_token": 0.00001,
+                                "n_price_cents_per_token": 0.0001,
+                                "n_price_dollars_per_token": 0.000001
+                            },
+                            "Input": "$0.0010 / 1K tokens",
+                            "o_output": {
+                                "n_price_dollars": 0.002,
+                                "n_tokens": 1000,
+                                "n_price_dimes_per_token": 0.00002,
+                                "n_price_cents_per_token": 0.0002,
+                                "n_price_dollars_per_token": 0.000002
+                            },
+                            "Output": "$0.0020 / 1K tokens"
+                        },
+                        {
+                            "Model": "gpt-3.5-turbo-0613",
+                            "o_input": {
+                                "n_price_dollars": 0.0015,
+                                "n_tokens": 1000,
+                                "n_price_dimes_per_token": 0.000014999999999999999,
+                                "n_price_cents_per_token": 0.00015,
+                                "n_price_dollars_per_token": 0.0000015
+                            },
+                            "Input": "$0.0015 / 1K tokens",
+                            "o_output": {
+                                "n_price_dollars": 0.002,
+                                "n_tokens": 1000,
+                                "n_price_dimes_per_token": 0.00002,
+                                "n_price_cents_per_token": 0.0002,
+                                "n_price_dollars_per_token": 0.000002
+                            },
+                            "Output": "$0.0020 / 1K tokens"
+                        },
+                        {
+                            "Model": "gpt-3.5-turbo-16k-0613",
+                            "o_input": {
+                                "n_price_dollars": 0.003,
+                                "n_tokens": 1000,
+                                "n_price_dimes_per_token": 0.000029999999999999997,
+                                "n_price_cents_per_token": 0.0003,
+                                "n_price_dollars_per_token": 0.000003
+                            },
+                            "Input": "$0.0030 / 1K tokens",
+                            "o_output": {
+                                "n_price_dollars": 0.004,
+                                "n_tokens": 1000,
+                                "n_price_dimes_per_token": 0.00004,
+                                "n_price_cents_per_token": 0.0004,
+                                "n_price_dollars_per_token": 0.000004
+                            },
+                            "Output": "$0.0040 / 1K tokens"
+                        },
+                        {
+                            "Model": "gpt-3.5-turbo-0301",
+                            "o_input": {
+                                "n_price_dollars": 0.0015,
+                                "n_tokens": 1000,
+                                "n_price_dimes_per_token": 0.000014999999999999999,
+                                "n_price_cents_per_token": 0.00015,
+                                "n_price_dollars_per_token": 0.0000015
+                            },
+                            "Input": "$0.0015 / 1K tokens",
+                            "o_output": {
+                                "n_price_dollars": 0.002,
+                                "n_tokens": 1000,
+                                "n_price_dimes_per_token": 0.00002,
+                                "n_price_cents_per_token": 0.0002,
+                                "n_price_dollars_per_token": 0.000002
+                            },
+                            "Output": "$0.0020 / 1K tokens"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "s_inner_text": "Simple and flexiblePay as you goTo keep things simple and flexible, pay only for the resources you use.Choose your modelUse the right model for the job. We offer a spectrum of capabilities and price points.",
+            "a_o_table": []
+        },
+        {
+            "s_inner_text": "Built with OpenAIView all customer storiesMorgan StanleyMorgan Stanley wealth management deploys GPT-4 to organize its vast knowledge base.StripeStripe leverages GPT-4 to streamline user experience and combat fraud.",
+            "s_heading": "Morgan Stanley",
+            "a_o_table": []
+        },
+        {
+            "s_inner_text": "",
+            "a_o_table": []
+        },
+        {
+            "s_inner_text": "FAQWhat’s a token?You can think of tokens as pieces of words used for natural language processing. For English text, 1 token is approximately 4 characters or 0.75 words. As a point of reference, the collected works of Shakespeare are about 900,000 words or 1.2M tokens.To learn more about how tokens work and estimate your usage…Experiment with our interactive Tokenizer tool.Log in to your account and enter text into the Playground. The counter in the footer will display how many tokens are in your text.Which model should I use?We generally recommend that developers use either gpt-4 or gpt-3.5-turbo, depending on how complex the tasks you are using the models for are. gpt-4 generally performs better on a wide range of evaluations, while gpt-3.5-turbo returns outputs with lower latency and costs much less per token. We recommend experimenting with these models in Playground to investigate which models provide the best price performance trade-off for your usage. A common design pattern is to use several distinct query types which are each dispatched to the model appropriate to handle them.How will I know how many tokens I’ve used each month?Log in to your account to view your usage tracking dashboard. This page will show you how many tokens you’ve used during the current and past billing cycles.How can I manage my spending?You can set a monthly budget in your billing settings, after which we’ll stop serving your requests. There may be a delay in enforcing the limit, and you are responsible for any overage incurred. You can also configure an email notification threshold to receive an email alert once you cross that threshold each month. We recommend checking your usage tracking dashboard regularly to monitor your spend.Is the ChatGPT API included in the ChatGPT Plus subscription?No, the ChatGPT API and ChatGPT Plus subscription are billed separately. The API has its own pricing, which can be found at https://openai.com/pricing. The ChatGPT Plus subscription covers usage on chat.openai.com only and costs $20/month.Does Playground usage count against my quota?Yes, we treat Playground usage the same as regular API usage.How is pricing calculated for Completions?Chat completion requests are billed based on the number of input tokens sent plus the number of tokens in the output(s) returned by the API.Your request may use up to num_tokens(input) + [max_tokens * max(n, best_of)] tokens, which will be billed at the per-engine rates outlined at the top of this page.In the simplest case, if your prompt contains 200 tokens and you request a single 900 token completion from the gpt-3.5-turbo-1106 API, your request will use 1100 tokens and will cost [(200 * 0.001) + (900 * 0.002)] / 1000 = $0.002.You can limit costs by reducing prompt length or maximum response length, limiting usage of best_of/n , adding appropriate stop sequences, or using engines with lower per-token costs.How is pricing calculated for Fine-tuning?There are two components to fine-tuning pricing: training and usage.When training a fine-tuned model, the total tokens used will be billed according to our training rates. Note that the number of training tokens depends on the number of tokens in your training dataset and your chosen number of training epochs. The default number of epochs is 4.(Tokens in your training file * Number of training epochs) = Total training tokensOnce you fine-tune a model, you’ll be billed only for the tokens you use. Requests sent to fine-tuned models are billed at our usage rates.Is there an SLA on the various models?We will be publishing an SLA soon. In the meantime you can visit our Status page to monitor service availability and view historical uptime. If your company or application has specific requirements, please contact our sales team.Is the API available on Microsoft Azure?Yes. Azure customers can access the OpenAI API on Azure with the compliance, regional support, and enterprise-grade security that Azure offers. Learn more or contact sales@openai.com.",
+            "s_heading": "What’s a token?",
+            "a_o_table": []
+        },
+        {
+            "s_inner_text": "ResearchOverviewIndexGPT-4DALL·E 3SoraAPIOverviewPricingDocsChatGPTOverviewTeamEnterprisePricingTry ChatGPTCompanyAboutBlogCareersCharterSecurityCustomer storiesSafetyOpenAI © 2015 – 2024Terms & policiesPrivacy policyBrand guidelinesSocialTwitterYouTubeGitHubSoundCloudLinkedInBack to top",
+            "a_o_table": []
+        }
+    ],
+    "n_ms_ts_fetched": 1709078798659
+}

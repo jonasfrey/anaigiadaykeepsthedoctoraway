@@ -1,3 +1,5 @@
-/gitignored
-/gitignored/
-/gitignored/*
+# Ignore files containing '.gitignored.'
+*.gitignored.*
+
+# But do not ignore files containing '.gitignored.example'
+!*.gitignored.example*
