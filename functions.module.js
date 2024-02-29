@@ -1,4 +1,5 @@
 import { f_a_o_model_pricing } from "./pricing.js";
+import { a_o_model_info } from "./runtimedata.module.js";
 
 const o_url_script = new URL(import.meta.url);
 const s_path_abs_folder_current_script = o_url_script.pathname.split('/').slice(0,-1).join('/');    
@@ -108,10 +109,20 @@ let f_o_stream__o_completion = async function(
     // })
     // return o_tmp
 }
+let f_a_o_model_info = async function(){
+
+    let a_o_model_pricing = await f_a_o_model_pricing();
+
+    for(let o_model_info of a_o_model_info){
+        o_model_info.v_o_pricing = a_o_model_pricing.find(o=>o.s_name_model == o_model_info.s_name);
+    }
+    return a_o_model_info
+}
 
 export {
     f_o_config,
     f_a_o_model,
     f_o_completion,
-    f_o_stream__o_completion
+    f_o_stream__o_completion,
+    f_a_o_model_info
 }

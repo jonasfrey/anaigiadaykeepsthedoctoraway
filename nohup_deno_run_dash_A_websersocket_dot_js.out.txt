@@ -29,7 +29,7 @@ f_v_before_return_response: async function(o_request){
             )
         }
         if(f){
-            return await f(...(o_request_data?.a_v_arg) ? o_request_data?.a_v_arg : [])
+            return await f(o_request_data?.o_param)
         }
     }
     
@@ -112,7 +112,7 @@ f_v_before_return_response: async function(o_request){
             )
         }
         if(f){
-            return await f(...(o_request_data?.a_v_arg) ? o_request_data?.a_v_arg : [])
+            return await f(o_request_data?.o_param)
         }
     }
     
@@ -169,3 +169,47 @@ Listening on https://localhost:8443/
 server(s) running:
    http://localhost:8080
    https://localhost:8443
+{
+  model: "dall-e-2",
+  size: "1024x1024",
+  n: 1,
+  prompt: "an elephant on a horse"
+}
+{
+  model: "dall-e-2",
+  size: "1024x1024",
+  n: 1,
+  prompt: "an elephant on a horse"
+}
+{
+  model: "dall-e-2",
+  size: "1024x1024",
+  n: 1,
+  prompt: "an elephant on a horse"
+}
+{
+  model: "dall-e-2",
+  size: "1024x1024",
+  n: 1,
+  prompt: "an elephant on a horse"
+}
+{
+  model: "dall-e-2",
+  size: "1024x1024",
+  n: 1,
+  prompt: "Estimated costs"
+}
+{ model: "dall-e-2", size: "1024x1024", n: 1, prompt: "a nice graph" }
+{
+  model: "dall-e-2",
+  size: "1024x1024",
+  n: 1,
+  prompt: "okkeeeey lets go!"
+}
+{
+  model: "dall-e-3",
+  size: "1024x1024",
+  quality: "standard",
+  n: 1,
+  prompt: "a logo for my new webapplication which is a consumer for an API"
+}

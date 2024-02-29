@@ -1,0 +1,11 @@
+[
+    {
+        "s": "you have to ctrl+shift+p 'Preferences: Open keyvbindings json and add it there...., fucking vscode does not read the keybindings in the .vscode/keybindings.json ... "
+    },
+    {
+        "key": "ctrl+s",
+        "command": "workbench.action.tasks.runTask",
+        "args": "refresh-browser",
+        "when": "editorTextFocus"
+    }
+]

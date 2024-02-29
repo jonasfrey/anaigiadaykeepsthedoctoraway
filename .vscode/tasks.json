@@ -1,0 +1,14 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "refresh-browser",
+            "type": "shell",
+            // "command": "CURRENT=$(xdotool getactivewindow) && xdotool search --onlyvisible --class Chrome windowfocus key ctrl+r && xdotool windowfocus --sync ${CURRENT} && xdotool windowactivate --sync ${CURRENT}",
+            // "command": "sh ./../reload_test.sh",
+            // "command": "echo 'test'",
+            // "command": "xdotool search --onlyvisible --class Chrome windowfocus key ctrl+r",
+            "problemMatcher": []
+        }
+    ]
+}

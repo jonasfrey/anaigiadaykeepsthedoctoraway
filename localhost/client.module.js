@@ -22,17 +22,21 @@ import {
     O_vec2
 } from "https://deno.land/x/vector@0.8/mod.js"
 
+let s_to = '👉'
+
 class O_message {
     constructor(
         n_ms_ts, 
         s_content,
         n_tokens_estimated,
-        v_o_completion
+        v_o_completion,
+        v_s_url_image
     ){
         this.n_ms_ts = n_ms_ts, 
         this.s_content = s_content,
         this.n_tokens_estimated = n_tokens_estimated
         this.v_o_completion = v_o_completion
+        this.v_s_url_image = v_s_url_image
     }
 }
 
@@ -40,6 +44,9 @@ o_variables.n_rem_font_size_base = 1.2 // adjust font size, other variables can 
 o_variables.n_rem_padding_interactive_elements = 0.6; // adjust padding for interactive elements 
 f_add_css(
     `
+    img{
+        max-width: 100%;
+    }
     /* Style for code blocks */
     pre code {
         display: block;
@@ -125,7 +132,7 @@ f_add_css(
 import {
     f_o_html__and_make_renderable,
 }
-from 'https://deno.land/x/f_o_html_from_o_js@2.7/mod.js'
+from 'https://deno.land/x/f_o_html_from_o_js@2.9/mod.js'
 
 let f_s_time = function(n_ms_ts){
     let o_date = new Date(n_ms_ts);
@@ -137,76 +144,24 @@ let f_s_time = function(n_ms_ts){
 }
 
 let s_port = window.location.port;
+let s = window.location.hostname;
 let s_url_api = `${window.location.protocol}//${window.location.hostname}:${s_port}`
-let s_text = '🔠'
-let s_speak = '🗣️'
-let s_image = '🖼️'
-let s_to = '👉'
-// let f_s_chars = function(s_input){
-//     s_input = s_input.replaceAll('')
-// }
-class O_model_info{
-    constructor(
-        s_name, 
-        a_o_type_input,
-        a_o_type_output
-    ){
-        this.s_name = s_name, 
-        this.a_o_type_input = a_o_type_input 
-        this.a_o_type_output = a_o_type_output
-    }
-}
-class O_type{
-    constructor(
-        a_s_name,
-        a_s_emoji
-    ){
-        this.a_s_name = a_s_name
-        this.a_s_emoji = a_s_emoji
-    }
-}
-let o_type_text = new O_type(
-    ['text'],
-    ['🔠']
-)
-let o_type_image = new O_type(
-    ['image'],
-    ['🖼️']
-)
-let o_type_audio = new O_type(
-    ['audio'],
-    ['🗣️']
-)
-let a_o_model_info = [
-    new O_model_info('gpt-4-vision-preview',[o_type_text],[o_type_image]),
-    new O_model_info('dall-e-3', [o_type_text],[o_type_image]),
-    new O_model_info('dall-e-2', [o_type_text],[o_type_image]),
-    new O_model_info('gpt-4', [o_type_text],[o_type_text]),
-    new O_model_info('gpt-4-turbo-preview', [o_type_text],[o_type_text]),
-    new O_model_info('gpt-3.5-turbo-0613', [o_type_text], [o_type_text]),
-    new O_model_info('gpt-3.5-turbo-1106', [o_type_text], [o_type_text]),
-    new O_model_info('gpt-3.5-turbo-16k', [o_type_text], [o_type_text]),
-    new O_model_info('gpt-4-0613', [o_type_text], [o_type_text]),
-    new O_model_info('gpt-3.5-turbo-16k-0613', [o_type_text], [o_type_text]),
-    new O_model_info('gpt-4-0125-preview', [o_type_text], [o_type_text]),
-    new O_model_info('gpt-3.5-turbo-instruct-0914', [o_type_text], [o_type_text]),
-    new O_model_info('gpt-4-1106-preview', [o_type_text], [o_type_text]),
-    new O_model_info('gpt-3.5-turbo-0125', [o_type_text], [o_type_text]),
-    new O_model_info('gpt-3.5-turbo', [o_type_text], [o_type_text]),
-    new O_model_info('gpt-3.5-turbo-0301', [o_type_text], [o_type_text]),
-    new O_model_info('whisper-1', [o_type_text],[o_type_audio]),
-    new O_model_info('tts-1', [o_type_text],[o_type_audio]),
-    new O_model_info('tts-1-1106', [o_type_text],[o_type_audio]),
-    new O_model_info('text-embedding-3-large', [], []),
-    new O_model_info('tts-1-hd-1106', [], []),
-    new O_model_info('tts-1-hd', [], []),
-    new O_model_info('babbage-002', [], []),
-    new O_model_info('gpt-3.5-turbo-instruct', [], []),
-    new O_model_info('davinci-002', [], []),
-    new O_model_info('text-embedding-ada-002', [], []),
-    new O_model_info('text-embedding-3-small', [], []),
-]
 
+
+
+let a_o_model_info = (await(
+    await(fetch(
+        s_url_api, 
+        {
+            method: "POST", 
+            body: JSON.stringify(
+                {
+                    s_name_function: 'f_s_json__a_o_model_info'
+                }
+            )
+        }
+    ))
+).json());
 let o_state = {
     a_o_model_info: a_o_model_info,
     b_display_settings: false, 
@@ -215,8 +170,11 @@ let o_state = {
     n_id_wsi: 0,
     s_url_api: s_url_api,
     s_text: 'hello',
-    a_o_model: (await(
+    o_req_data: {},
+    a_o_model: 
+    (await(
         await(fetch(
+
             s_url_api, 
             {
                 method: "POST", 
@@ -227,16 +185,17 @@ let o_state = {
                 )
             }
         ))
-    ).json()).map(o=>{
-        o.v_o_model_info = a_o_model_info.find(o=>o.s_name == o?.id);
+    ).json()).map(o=>{    
+        o.v_o_model_info = a_o_model_info.find(o2=>o2.s_name == o?.id);
+        console.log(o)
         return o
     }).sort((o,o2)=>{
         let n_idx1 = a_o_model_info.map(o=>o.s_name).indexOf(o?.id);
         let n_idx2 = a_o_model_info.map(o=>o.s_name).indexOf(o2?.id);
         return n_idx1-n_idx2
-    }), 
+    }),
     o_model: null, 
-    s_prompt: 'make a text with the most common markdown elements that i can use to test my markdown to html script toghteher with my css styling',
+    s_prompt: 'geh du dies, geh du das',
     a_o_message: []
 }
 
@@ -365,6 +324,7 @@ document.body.appendChild(
                                                         } - ${f_s_time(o.n_ms_ts)}`
                                                     }, 
                                                     {
+                                                        b_render: (o.s_content && o.s_content.trim() != ''),
                                                         style: [
                                                             'max-width: 90%', 
                                                         ].join(';'),
@@ -373,6 +333,11 @@ document.body.appendChild(
                                                         // innerHTML:  o_showdown_md_to_html_converter.makeHtml(
                                                             o.s_content
                                                         )
+                                                    },
+                                                    {
+                                                        b_render: (o.v_s_url_image),
+                                                        s_tag: 'img', 
+                                                        src: o.v_s_url_image
                                                     }
                                                 ]
                                             }
@@ -395,13 +360,12 @@ document.body.appendChild(
                                             s_tag: "select", 
                                             a_o: [
                                                 ...o_state?.a_o_model.map(o=>{
-                                                    
                                                     let s_icons = [
-                                                        o?.v_o_model_info?.a_o_type_input.map(o=>{
-                                                            o.a_s_emoji[0]
+                                                        o?.v_o_model_info?.a_o_type_input.map(o2=>{
+                                                            return o2.a_s_emoji[0]
                                                         }),
-                                                        o?.v_o_model_info?.a_o_type_output.map(o=>{
-                                                            o.a_s_emoji[0]
+                                                        o?.v_o_model_info?.a_o_type_output.map(o2=>{
+                                                            return o2.a_s_emoji[0]
                                                         })
                                                     ].join(s_to)
                                                     
@@ -423,6 +387,7 @@ document.body.appendChild(
                                             onchange: (o_e)=>{
                                                 o_state.o_model = o_state?.a_o_model.find(o=>o.id == o_e.target.value)
                                                 o_state?.o_js__price_estimation?._f_render();
+                                                o_state?.o_js__input?._f_render();
                                             }
                                         }
                                     }
@@ -434,17 +399,75 @@ document.body.appendChild(
                             {
                                 o_js__input: {
                                     f_o_jsh: ()=> {
+                                        console.log(
+                                            o_state?.o_model?.v_o_model_info?.a_o_request_parameter
+                                        )
                                         return {
                                             a_o: [
-                                                {   
-                                                    s_tag: "textarea", 
-                                                    rows: 5,
-                                                    value: o_state.s_prompt,
-                                                    oninput: (o_e)=>{
-                                                        o_state.s_prompt = o_e.target.value;
-                                                        o_state?.o_js__price_estimation?._f_render();
-                                                    }
-                                                }
+                                                ...[
+                                                    (o_state?.o_model?.v_o_model_info?.a_o_request_parameter) 
+                                                        ? o_state?.o_model?.v_o_model_info?.a_o_request_parameter?.map(
+                                                            o2=>{
+                                                                console.log(o2)
+                                                                if(o2.a_v_available_for_select?.length > 0){
+                                                                    return {
+                                                                        s_tag: "select", 
+                                                                        a_o: [
+                                                                            ...o2.a_v_available_for_select.map(v=>{
+                                                                                
+                                                                                return {
+                                                                                    s_tag: 'option', 
+                                                                                    selected: v == o2.v,
+                                                                                    value: v,
+                                                                                    innerText: v
+                                                                                }
+                                                                            })
+                                                                        ], 
+                                                                        onchange: (o_e)=>{
+                                                                            o2.v = o_e.target.value;
+                                                                        }
+                                                                    }
+                                                                }
+                                                                if(o2.n_min__for_tokens > 0){
+                                                                    return {
+                                                                        s_tag: "textarea", 
+                                                                        value: o2.v,
+                                                                        oninput: (o_e)=>{
+                                                                            o_state.s_prompt = o_e.target.value;
+                                                                            o2.v = o_e.target.value;
+                                                                            o_state?.o_js__price_estimation?._f_render();
+                                                                        }
+                                                                    }
+                                                                }
+                                                                if(o2.n_min__for_number > 0){
+                                                                    return {
+                                                                        s_tag: "input",
+                                                                        type: 'number',
+                                                                        min:  o2.n_min__for_number, 
+                                                                        max: o2.n_max__for_number,
+                                                                        step: o2.n_step__for_number,
+                                                                        value: (o2.v) ? o2.v : o2.v_default,
+                                                                        oninput: (o_e)=>{
+                                                                            let n = parseFloat(o_e.target.value); 
+                                                                            o2.v = n;
+                                                                        }
+                                                                    }
+                                                                }
+
+                                                            }
+                                                        )
+                                                        : false
+                                                ].filter(v=>v)
+                                                
+                                                // {   
+                                                //     s_tag: "textarea", 
+                                                //     rows: 5,
+                                                //     value: o_state.s_prompt,
+                                                //     oninput: (o_e)=>{
+                                                //         o_state.s_prompt = o_e.target.value;
+                                                //         o_state?.o_js__price_estimation?._f_render();
+                                                //     }
+                                                // }
                                             ]
                                         } 
                                     }
@@ -511,31 +534,8 @@ document.body.appendChild(
                                     o_state.a_o_message.push(o_state.o_message_out);
                                     let s_tmp = '';
 
-                                    let f_processChunk = function(chunkStr) {
-                                    s_tmp += chunkStr;
-                                    let delimiterIndex;
-                                    // Assuming SSE-like messages end with double newlines
-                                    while ((delimiterIndex = s_tmp.indexOf('\n\n')) !== -1) {
-                                        const message = s_tmp.substring(0, delimiterIndex);
-                                        s_tmp = s_tmp.substring(delimiterIndex + 2);
-
-                                        if (message.startsWith('data: ')) {
-                                        const data = message.substring(6);
-                                        // Process the data portion here
-                                        }
-                                    }
-                                    }
                                     let o_reader = null;
-                                    let f_process_a_n_u8 = function(v){
-                                        console.log(v)
-                                        // console.log(
-                                        //     {
-                                        //         a_n_u8, 
-                                        //         s: new TextDecoder.decode(a_n_u8)
-                                        //     }
-                                        // )
-                                        // if()
-                                    }
+
 
                                     fetch(
                                         o_state.s_url_api,
@@ -547,70 +547,78 @@ document.body.appendChild(
                                             },
                                             body: JSON.stringify({
                                                 s_name_function: 'f_o_stream__o_completion',
-                                                a_v_arg: [
-                                                    o_state.s_prompt, 
-                                                    o_state.o_model.id,
-                                                ]
+                                                o_param: Object.assign(
+                                                    {
+                                                        s_name_model: o_state?.o_model?.id,
+                                                    },
+                                                    ...o_state?.o_model?.v_o_model_info?.a_o_request_parameter.map(o=>{
+                                                        if(!o.v){
+                                                            return false
+                                                        }
+                                                        return {
+                                                            [o.s_name] : o.v
+                                                        }
+                                                    }).filter(v=>v)
+                                                )
                                             }),
                                         }
                                     )
                                     .then(async o_response => {
+                                        const transferEncoding = o_response.headers.get('Transfer-Encoding');
+                                        if (
+                                            ![
+                                                "dall-e-3",
+                                                "dall-e-2"
+                                            ].includes(o_state.o_model?.id)
+                                            
+                                            // transferEncoding && transferEncoding.includes('chunked')
+                                            ) {
+                                        //   console.log('Response is chunked.');
+
+                                          o_reader = o_response.body.getReader();
+                                          console.log(o_reader)
+                                          let o = {done:false}
+  
+                                          while(!o.done){
+                                              o = await o_reader.read();
+                                              let a_n_u8 = o.value;
+                                              let s = new TextDecoder().decode(a_n_u8);
+                                              let a_o = s.split('\n\n').map(async s=>{
+                                                  let s_json = s.substring('data: '.length);
+                                                  if(['', '[DONE]'].includes(s_json.trim())){return false}
+                                                  console.log(s_json)
+                                                  let o = JSON.parse(s_json);
+                                                  o_state.o_message_out.n_ms_ts = o.created*1000;
+                                                  console.log(o_state.o_message_out.n_ms_ts)
+                                                  o_state.o_message_out.v_o_completion = o;
+                                                  if(o?.choices?.[0]?.delta?.content){
+                                                      o_state.o_message_out.s_content += o.choices[0].delta.content
+                                                  }
+  
+                                                  o_state.o_js__s_output._f_render()
+                                                  f_scroll_down();
+                                                  
+                                                  return o
+                                              });
+  
+                                             
+                                          }
+
+                                          
+                                        } else {
+                                            o_state.o_message_out.v_o_completion  = await o_response.json();
+                                            o_state.o_message_out.v_s_url_image = o_state.o_message_out.v_o_completion?.data[0]?.url
+                                            o_state.o_js__s_output._f_render()
+                                            f_scroll_down();
+                                        //   console.log('Response is not chunked.');
+                                        }
                                         if(!o_response.ok){
                                             throw new Error(`HTTP error! status: ${o_response.status}`);
                                         }
-                                        o_reader = o_response.body.getReader();
-                                        let o = {done:false}
 
-                                        while(!o.done){
-                                            o = await o_reader.read();
-                                            let a_n_u8 = o.value;
-                                            let s = new TextDecoder().decode(a_n_u8);
-                                            let a_o = s.split('\n\n').map(async s=>{
-                                                let s_json = s.substring('data: '.length);
-                                                if(['', '[DONE]'].includes(s_json.trim())){return false}
-                                                console.log(s_json)
-                                                let o = JSON.parse(s_json);
-                                                o_state.o_message_out.n_ms_ts = o.created*1000;
-                                                console.log(o_state.o_message_out.n_ms_ts)
-                                                o_state.o_message_out.v_o_completion = o;
-                                                if(o?.choices?.[0]?.delta?.content){
-                                                    o_state.o_message_out.s_content += o.choices[0].delta.content
-                                                }
-
-                                                return o
-                                            });
-
-                                            await o_state.o_js__s_output._f_render(),
-                                            f_scroll_down();
-                                        }
-
-                                        // o_reader.read().then(function f_process_read_returnvalue({ done, value }) {
-                                        //     // Result objects contain two properties:
-                                        //     // done  - true if the stream has already given you all its data.
-                                        //     // value - some data. Always undefined when done is true.
-                                        //     if (done) {
-                                        //       console.log("Stream complete");
-                                        //       return;
-                                        //     }
-                                        //     let a_n_u8 = value;
-                                        //     let s = new TextDecoder().decode(a_n_u8);
-                                        //     console.log(s)
-                                        
-                                        //     // Read some more, and call this function again
-                                        //     return o_reader.read().then(f_process_read_returnvalue);
-                                        //   });
 
                                     })
-                                    // .then(stream => {
-                                    //   console.log(stream)
-                                    //     // The new stream can be consumed directly
-                                    //   return new Response(stream).text();
-                                    // })
-                                    // .then(text => {
-                                    //     console.log(text)
-                                    //   console.log(text);
-                                    //   // Process the text
-                                    // })
+
                                     .catch(error => {
                                       console.error('Fetch error:', error);
                                     });
