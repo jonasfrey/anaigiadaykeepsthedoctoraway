@@ -38,11 +38,12 @@ let f_s_date = function(n_ms_ts){
     return `${s_day_of_week}, ${n_day_of_month} ${s_month} ${n_year}`;
 }
 let n = 0.7
+console.log(o_variables)
 o_variables.o_hsla__fg.n_x = n + (Math.random()*(1.-n))
 o_variables.o_hsla__fg.n_y = n + (Math.random()*(1.-n))
 o_variables.o_hsla__fg.n_z = n + (Math.random()*(1.-n))
 o_variables.o_hsla__fg.n_w = 0.9
-o_variables.n_rem_font_size_base = 1.2 // adjust font size, other variables can also be adapted before adding the css to the dom
+o_variables.n_rem_font_size_base = 1.0 // adjust font size, other variables can also be adapted before adding the css to the dom
 o_variables.n_rem_padding_interactive_elements = 0.6; // adjust padding for interactive elements 
 f_add_css(
     `
@@ -95,7 +96,7 @@ f_add_css(
         margin: 0.6rem 0;
         background-color: rgba(0,0,0,0.7);
         border-radius: 9px;
-        max-width: 900px;
+        max-width: 1200px;
     }
     ${
         f_s_css_from_o_variables(
@@ -110,7 +111,7 @@ let s_domain = 'localhost';
 if(window.location.href.includes('deno.dev')){
     s_domain = 'thisisaweb.site'
 }
-let s_url_api = `http://${s_domain}:8080/cors_allowed/${s_ymd}`
+let s_url_api = `https://${s_domain}:8443/cors_allowed/${s_ymd}`
 let s_url_file_json_ymd = `${s_url_api}/o_generation_info_${s_ymd}.json`
 let s_url_file_wav_ymd = `${s_url_api}/generation${s_ymd}.wav`
 let s_url_file_png_ymd = `${s_url_api}/generation${s_ymd}.png`
@@ -158,7 +159,7 @@ document.body.appendChild(
                         },
                         {
                             class: 'text',
-                            s_tag: "h2",
+                            s_tag: "h5",
                             innerText: f_s_date(new Date().getTime())
                         }, 
                     ]
@@ -188,7 +189,7 @@ document.body.appendChild(
                         {
                             data_tooltip: 'This was the input prompt used to generate the image.',
                             class: 'text',
-                            s_tag: 'h2',
+                            s_tag: 'h6',
                             innerText: o_state?.o_generation_info?.o_generation_image?.o_request_data?.prompt
                         }
                     ]
