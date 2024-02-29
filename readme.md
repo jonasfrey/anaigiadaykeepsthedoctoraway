@@ -1,2 +1,2 @@
 # a AIGI a day keeps the doctor away
-AIGI => Artificial-Intelligence generated image
+AIGI => Artificial-Intelligence generated image !
