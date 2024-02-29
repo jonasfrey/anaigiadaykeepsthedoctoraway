@@ -1,0 +1,236 @@
+{
+    "o_generation_prompt": {
+        "s_url_api_endpoint": "https://api.openai.com/v1/chat/completions",
+        "s_name_model": "gpt-4",
+        "v_o_model_info": {
+            "s_name": "gpt-4",
+            "a_o_type_input": [
+                {
+                    "a_s_name": [
+                        "text"
+                    ],
+                    "a_s_emoji": [
+                        "🔠"
+                    ]
+                }
+            ],
+            "a_o_type_output": [
+                {
+                    "a_s_name": [
+                        "text"
+                    ],
+                    "a_s_emoji": [
+                        "🔠"
+                    ]
+                }
+            ],
+            "a_o_request_parameter": [
+                {
+                    "s_name": "prompt",
+                    "v_default": "",
+                    "a_v_available_for_select": null,
+                    "n_min__for_number": null,
+                    "n_max__for_number": null,
+                    "n_step__for_number": null,
+                    "n_min__for_tokens": 1,
+                    "n_max__for_tokens": 4096
+                }
+            ],
+            "v_o_pricing": {
+                "Price per 1K tokens (fixed)": "Resized width",
+                "$0.01": "150"
+            },
+            "s_url_api_endpoint": "https://api.openai.com/v1/chat/completions"
+        },
+        "o_request_data": {
+            "model": "gpt-4",
+            "messages": [
+                {
+                    "role": "user",
+                    "content": "Make a short text prompt for a Image generator AI"
+                }
+            ]
+        },
+        "n_ts_ms_ut__fetch": 1709214267714,
+        "n_ts_ms_ut__response_complete": 1709214269353,
+        "o_response_info": {
+            "o_from_json": {
+                "created": 1709214288,
+                "data": [
+                    {
+                        "b64_json": "...truncated...",
+                        "revised_prompt": "Craft an image capturing a tranquil sunset, where the sky is filled with hues of orange, purple, and red, gently kissing the surface of a pristine, mirror-like lake. There's a quaint wooden cabin, its rustic charm fitting seamlessly into the natural surroundings, comfortably tucked among a bunch of richly green, towering pine trees. The whole scene emanates the peacefulness and richness of untouched nature."
+                    }
+                ]
+            }
+        },
+        "n_cents_cost_estimation_input": null,
+        "n_cents_cost_estimation_output": null
+    },
+    "o_generation_audio": {
+        "s_url_api_endpoint": "https://api.openai.com/v1/audio/speech",
+        "s_name_model": "tts-1-hd",
+        "v_o_model_info": {
+            "s_name": "tts-1-hd",
+            "a_o_type_input": [],
+            "a_o_type_output": [],
+            "a_o_request_parameter": [
+                {
+                    "s_name": "voice",
+                    "v_default": "alloy",
+                    "a_v_available_for_select": [
+                        "alloy",
+                        "echo",
+                        "fable",
+                        "onyx",
+                        "nova",
+                        "shimmer"
+                    ]
+                },
+                {
+                    "s_name": "response_format",
+                    "v_default": "wav",
+                    "a_v_available_for_select": [
+                        "mp3",
+                        "opus",
+                        "aac",
+                        "flac",
+                        "wav",
+                        "pcm"
+                    ]
+                },
+                {
+                    "s_name": "speed",
+                    "v_default": 1,
+                    "a_v_available_for_select": null,
+                    "n_min__for_number": 0.25,
+                    "n_max__for_number": 4,
+                    "n_step__for_number": 0.25
+                },
+                {
+                    "s_name": "input",
+                    "v_default": "",
+                    "a_v_available_for_select": null,
+                    "n_min__for_number": null,
+                    "n_max__for_number": null,
+                    "n_step__for_number": null,
+                    "n_min__for_tokens": 1,
+                    "n_max__for_tokens": 4096
+                }
+            ],
+            "v_o_pricing": {
+                "Model": "TTS HD",
+                "o_usage": {
+                    "n_price_dollars": 0.03,
+                    "n_tokens": null,
+                    "n_price_dimes_per_token": null,
+                    "n_price_cents_per_token": null,
+                    "n_price_dollars_per_token": null
+                },
+                "Usage": "$0.030 / 1K characters"
+            }
+        },
+        "o_request_data": {
+            "model": "tts-1-hd",
+            "voice": "alloy",
+            "response_format": "wav",
+            "speed": 1,
+            "input": "\"Generate an image of a serene sunset over a crystal-clear lake with a small wooden cabin nestled among lush green pine trees.\""
+        },
+        "n_ts_ms_ut__fetch": 1709214269354,
+        "n_ts_ms_ut__response_complete": 1709214271371
+    },
+    "o_generation_image": {
+        "s_url_api_endpoint": "https://api.openai.com/v1/images/generations",
+        "s_name_model": "dall-e-3",
+        "v_o_model_info": {
+            "s_name": "dall-e-3",
+            "a_o_type_input": [
+                {
+                    "a_s_name": [
+                        "text"
+                    ],
+                    "a_s_emoji": [
+                        "🔠"
+                    ]
+                }
+            ],
+            "a_o_type_output": [
+                {
+                    "a_s_name": [
+                        "image"
+                    ],
+                    "a_s_emoji": [
+                        "🖼️"
+                    ]
+                }
+            ],
+            "a_o_request_parameter": [
+                {
+                    "s_name": "size",
+                    "v_default": "1024x1024",
+                    "a_v_available_for_select": [
+                        "1024x1024",
+                        "1024x1792",
+                        "1792x1024"
+                    ]
+                },
+                {
+                    "s_name": "quality",
+                    "v_default": "standard",
+                    "a_v_available_for_select": [
+                        "hd",
+                        "standard"
+                    ]
+                },
+                {
+                    "s_name": "n",
+                    "v_default": 1,
+                    "a_v_available_for_select": null,
+                    "n_min__for_number": 1,
+                    "n_max__for_number": 1,
+                    "n_step__for_number": 1
+                },
+                {
+                    "s_name": "style",
+                    "v_default": "vivid",
+                    "a_v_available_for_select": [
+                        "vivid",
+                        "natural"
+                    ]
+                },
+                {
+                    "s_name": "response_format",
+                    "v_default": "b64_json",
+                    "a_v_available_for_select": [
+                        "url",
+                        "b64_json"
+                    ]
+                },
+                {
+                    "s_name": "prompt",
+                    "v_default": "",
+                    "a_v_available_for_select": null,
+                    "n_min__for_number": null,
+                    "n_max__for_number": null,
+                    "n_step__for_number": null,
+                    "n_min__for_tokens": 1,
+                    "n_max__for_tokens": 4096
+                }
+            ],
+            "v_o_pricing": {
+                "Price per 1K tokens (fixed)": "Resized width",
+                "$0.01": "150"
+            },
+            "s_url_api_endpoint": "https://api.openai.com/v1/images/generations"
+        },
+        "o_request_data": {
+            "model": "dall-e-3",
+            "prompt": "\"Generate an image of a serene sunset over a crystal-clear lake with a small wooden cabin nestled among lush green pine trees.\"",
+            "size": "1792x1024",
+            "style": "natural",
+            "response_format": "b64_json"
+        },
+        "n_ts_ms_ut__fetch": 1709214271374
+    }
+}

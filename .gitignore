@@ -3,5 +3,3 @@
 
 # But do not ignore files containing '.gitignored.example'
 !*.gitignored.example*
-
-node_modules/

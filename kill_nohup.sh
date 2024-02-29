@@ -1,3 +1,1 @@
-pkill -f websersocket_a003f17a-e875-4af3-a676-0709fc3ecf3f.js
-# kill -9 `cat save_pid.txt`
-# rm save_pid.txt
+pkill -f websersocket_d198b709-13af-42d5-94e5-5ad945fb2303.js
